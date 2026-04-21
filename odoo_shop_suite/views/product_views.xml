@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_product_template_form_shop_suite" model="ir.ui.view">
+        <field name="name">product.template.form.shop.suite</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Shop Suite">
+                    <group>
+                        <group string="Catalog">
+                            <field name="shop_suite_sku"/>
+                            <field name="shop_suite_is_featured"/>
+                            <field name="shop_suite_barcode_required"/>
+                        </group>
+                        <group string="Inventory Policy">
+                            <field name="shop_suite_reorder_min_qty"/>
+                            <field name="shop_suite_reorder_target_qty"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_product_product_form_shop_suite" model="ir.ui.view">
+        <field name="name">product.product.form.shop.suite.barcode</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button
+                    name="action_open_barcode_inventory_wizard"
+                    type="object"
+                    string="Barcode Inventory Update"
+                    class="btn-primary"
+                    groups="stock.group_stock_user"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>

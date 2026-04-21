@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="website_shop_suite_landing" name="Shop Suite Landing">
+        <t t-call="website.layout">
+            <div id="wrap" class="shop-suite-page">
+                <section class="shop-suite-hero position-relative shop-suite-reveal">
+                    <div class="container py-5">
+                        <div class="row align-items-center g-4">
+                            <div class="col-lg-6">
+                                <span class="badge rounded-pill text-bg-light mb-3">Odoo 19 Commerce Stack</span>
+                                <h1 class="display-5 fw-bold mb-3">Sell online and in-store with one smart system</h1>
+                                <p class="lead mb-4">
+                                    Manage products, stock, barcode flows, and customer experience from one modern platform.
+                                </p>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <a class="btn btn-primary btn-lg" href="/shop">Start Shopping</a>
+                                    <a class="btn btn-outline-light btn-lg" href="/contactus">Talk to Sales</a>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="shop-suite-hero-card shadow-lg">
+                                    <div class="shop-suite-stat-grid">
+                                        <div class="shop-suite-stat">
+                                            <span class="value">360°</span>
+                                            <span class="label">Unified Operations</span>
+                                        </div>
+                                        <div class="shop-suite-stat">
+                                            <span class="value">24/7</span>
+                                            <span class="label">Online Selling</span>
+                                        </div>
+                                        <div class="shop-suite-stat">
+                                            <span class="value">1-Scan</span>
+                                            <span class="label">Barcode Update</span>
+                                        </div>
+                                        <div class="shop-suite-stat">
+                                            <span class="value">Live</span>
+                                            <span class="label">Stock Visibility</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="shop-suite-hero-glow"></div>
+                </section>
+
+                <section class="py-5 bg-light shop-suite-reveal">
+                    <div class="container">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h2 class="h3 m-0">Featured Products</h2>
+                            <a href="/shop" class="btn btn-outline-primary">View All</a>
+                        </div>
+                        <div class="row g-4">
+                            <t t-if="featured_products">
+                                <t t-foreach="featured_products" t-as="product">
+                                    <div class="col-12 col-sm-6 col-lg-3">
+                                        <div class="card h-100 border-0 shadow-sm shop-suite-product-card">
+                                            <a t-att-href="'/shop/product/%s' % product.id">
+                                                <img t-if="product.image_512"
+                                                     t-att-src="'/web/image/product.template/%s/image_512' % product.id"
+                                                     class="card-img-top"
+                                                     t-att-alt="product.name"/>
+                                                <img t-else=""
+                                                     src="/website_sale/static/src/img/default_product.jpg"
+                                                     class="card-img-top"
+                                                     alt="Product"/>
+                                            </a>
+                                            <div class="card-body">
+                                                <h3 class="h6">
+                                                    <a class="text-decoration-none text-dark" t-att-href="'/shop/product/%s' % product.id">
+                                                        <t t-esc="product.name"/>
+                                                    </a>
+                                                </h3>
+                                                <p class="text-muted small mb-2">
+                                                    SKU: <t t-esc="product.shop_suite_sku or product.default_code or '-'"/>
+                                                </p>
+                                                <strong class="text-primary">
+                                                    <t t-esc="product.currency_id.symbol"/>
+                                                    <t t-esc="'%.2f' % product.list_price"/>
+                                                </strong>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </t>
+                            </t>
+                            <t t-else="">
+                                <div class="col-12">
+                                    <div class="alert alert-info m-0">
+                                        No featured products yet. Mark products as featured from the backend to showcase them here.
+                                    </div>
+                                </div>
+                            </t>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="py-5 shop-suite-reveal">
+                    <div class="container">
+                        <h2 class="h3 mb-4">Popular Categories</h2>
+                        <div class="row g-3">
+                            <t t-if="top_categories">
+                                <t t-foreach="top_categories" t-as="category">
+                                    <div class="col-12 col-md-6 col-lg-4">
+                                        <a class="shop-suite-category-card d-flex justify-content-between align-items-center"
+                                           t-att-href="'/shop/category/%s' % category.id">
+                                            <span class="fw-semibold">
+                                                <t t-esc="category.name"/>
+                                            </span>
+                                            <span class="text-primary">Explore</span>
+                                        </a>
+                                    </div>
+                                </t>
+                            </t>
+                            <t t-else="">
+                                <div class="col-12">
+                                    <div class="alert alert-secondary m-0">No categories found yet.</div>
+                                </div>
+                            </t>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </t>
+    </template>
+
+    <template id="website_sale_navigation_inherit" inherit_id="website_sale.header_cart_link">
+        <xpath expr="//li[contains(@class, 'o_wsale_my_cart')]" position="before">
+            <li class="nav-item">
+                <a class="nav-link" href="/shop-suite">Shop Suite</a>
+            </li>
+        </xpath>
+    </template>
+</odoo>

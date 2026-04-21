@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <menuitem
+        id="menu_shop_suite_root"
+        name="Shop Suite"
+        sequence="80"
+        groups="odoo_shop_suite.group_shop_suite_manager,odoo_shop_suite.group_shop_suite_user"
+    />
+
+    <record id="action_shop_quick_product_create_wizard" model="ir.actions.act_window">
+        <field name="name">Quick Product Onboarding</field>
+        <field name="res_model">shop.quick.product.create.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <record id="action_shop_barcode_inventory_wizard" model="ir.actions.act_window">
+        <field name="name">Barcode Inventory Update</field>
+        <field name="res_model">shop.barcode.inventory.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <record id="action_shop_inventory_log" model="ir.actions.act_window">
+        <field name="name">Inventory Operations Log</field>
+        <field name="res_model">shop.inventory.log</field>
+        <field name="view_mode">tree,form,pivot,graph</field>
+        <field name="help" type="html">
+            <p>Track every inventory change made through Shop Suite flows.</p>
+        </field>
+    </record>
+
+    <menuitem
+        id="menu_shop_suite_quick_product"
+        name="Quick Product Onboarding"
+        parent="menu_shop_suite_root"
+        action="action_shop_quick_product_create_wizard"
+        sequence="10"
+        groups="odoo_shop_suite.group_shop_suite_manager"
+    />
+    <menuitem
+        id="menu_shop_suite_barcode_adjustment"
+        name="Barcode Inventory Update"
+        parent="menu_shop_suite_root"
+        action="action_shop_barcode_inventory_wizard"
+        sequence="20"
+        groups="stock.group_stock_user"
+    />
+    <menuitem
+        id="menu_shop_suite_inventory_log"
+        name="Inventory Operations Log"
+        parent="menu_shop_suite_root"
+        action="action_shop_inventory_log"
+        sequence="30"
+        groups="stock.group_stock_user"
+    />
+</odoo>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_shop_inventory_log_tree" model="ir.ui.view">
+        <field name="name">shop.inventory.log.tree</field>
+        <field name="model">shop.inventory.log</field>
+        <field name="arch" type="xml">
+            <tree string="Inventory Logs" create="false" edit="false">
+                <field name="create_date"/>
+                <field name="product_id"/>
+                <field name="location_id"/>
+                <field name="operation_type"/>
+                <field name="quantity_delta"/>
+                <field name="quantity_after"/>
+                <field name="user_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_shop_inventory_log_form" model="ir.ui.view">
+        <field name="name">shop.inventory.log.form</field>
+        <field name="model">shop.inventory.log</field>
+        <field name="arch" type="xml">
+            <form string="Inventory Log" create="false" edit="false">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="product_id"/>
+                            <field name="location_id"/>
+                            <field name="operation_type"/>
+                        </group>
+                        <group>
+                            <field name="quantity_delta"/>
+                            <field name="quantity_after"/>
+                            <field name="user_id"/>
+                            <field name="create_date"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="note"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_shop_inventory_log_search" model="ir.ui.view">
+        <field name="name">shop.inventory.log.search</field>
+        <field name="model">shop.inventory.log</field>
+        <field name="arch" type="xml">
+            <search string="Inventory Logs">
+                <field name="product_id"/>
+                <field name="operation_type"/>
+                <field name="location_id"/>
+                <group string="Group By">
+                    <filter string="Product" name="group_product" context="{'group_by': 'product_id'}"/>
+                    <filter string="Operation" name="group_operation" context="{'group_by': 'operation_type'}"/>
+                    <filter string="Location" name="group_location" context="{'group_by': 'location_id'}"/>
+                    <filter string="User" name="group_user" context="{'group_by': 'user_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+</odoo>
