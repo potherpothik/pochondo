@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_shop_quick_product_create_wizard_form" model="ir.ui.view">
+        <field name="name">shop.quick.product.create.wizard.form</field>
+        <field name="model">shop.quick.product.create.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Quick Product Create">
+                <group>
+                    <group>
+                        <field name="name"/>
+                        <field name="categ_id"/>
+                        <field name="detailed_type"/>
+                        <field name="publish_on_website"/>
+                    </group>
+                    <group>
+                        <field name="list_price"/>
+                        <field name="standard_price"/>
+                        <field name="shop_suite_reorder_min_qty"/>
+                        <field name="shop_suite_reorder_target_qty"/>
+                    </group>
+                </group>
+                <group>
+                    <group>
+                        <field name="barcode"/>
+                        <field name="default_code"/>
+                    </group>
+                    <group>
+                        <field name="shop_suite_sku"/>
+                        <field name="shop_suite_is_featured"/>
+                    </group>
+                </group>
+                <footer>
+                    <button name="action_create_product" type="object" string="Create Product" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

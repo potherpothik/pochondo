@@ -1,0 +1,117 @@
+.shop-suite-landing {
+    background: radial-gradient(circle at top right, #eff6ff 0%, #ffffff 55%);
+}
+
+.shop-suite-hero {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    padding: 5rem 0 2rem;
+}
+
+.shop-suite-hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    border-radius: 999px;
+    background: rgba(59, 130, 246, 0.12);
+    color: #1d4ed8;
+    padding: 0.35rem 0.9rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+}
+
+.shop-suite-hero h1 {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    margin: 1rem 0;
+    font-weight: 800;
+    line-height: 1.1;
+    color: #0f172a;
+}
+
+.shop-suite-hero p {
+    color: #334155;
+    max-width: 540px;
+    font-size: 1.05rem;
+}
+
+.shop-suite-hero-cards {
+    display: grid;
+    gap: 1rem;
+}
+
+.shop-suite-floating-card {
+    background: #ffffff;
+    border-radius: 1rem;
+    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.1);
+    padding: 1rem 1.2rem;
+    transform: translateY(0);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.shop-suite-floating-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 24px 44px rgba(15, 23, 42, 0.16);
+}
+
+.shop-suite-section-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.2rem;
+}
+
+.shop-suite-product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 1rem;
+}
+
+.shop-suite-product-card {
+    border-radius: 1rem;
+    border: 1px solid #e2e8f0;
+    overflow: hidden;
+    background: #fff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.shop-suite-product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 18px 36px rgba(2, 6, 23, 0.12);
+}
+
+.shop-suite-product-card .p-3 h5 {
+    color: #0f172a;
+}
+
+.shop-suite-empty {
+    border: 1px dashed #cbd5e1;
+    border-radius: 1rem;
+    padding: 2rem;
+    text-align: center;
+    color: #475569;
+}
+
+.shop-suite-cta {
+    background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 50%, #0ea5e9 100%);
+    color: #fff;
+    border-radius: 1.5rem;
+    padding: 2rem;
+}
+
+.shop-suite-cta h3,
+.shop-suite-cta p {
+    color: #fff;
+}
+
+.shop-suite-reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.shop-suite-reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
